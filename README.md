@@ -1,29 +1,29 @@
-# Чекер балансов EVM сетей
-**12 сетей, 1000 кошельков, 5 секунд**
+# Balance checker for EVM networks
+**12 networks, 1000 wallets, 5 seconds**
 
 https://github.com/B0R9F3D9/fastest-evm-balance-checker/assets/131712860/b8ae5772-3586-43c9-827d-42b1fff889b2
 
-# Доступные Сети
-**Arbitrum, Arbitrum Nova, Base, Blast, BSC, Ethereum, Fantom, Linea, Optimism, Polygon, Scroll, Zora. Впрочем можно добавить любую EVM сеть**
+# Available Networks
+**Arbitrum, Arbitrum Nova, Base, Blast, BSC, Ethereum, Fantom, Linea, Optimism, Polygon, Scroll, Zora. However, you can add any EVM network**
 
 # Настройка
-* В файл `wallets.txt` вписываем **адреса** кошельков с новой строки
+* In the file `wallets.txt` we enter wallet **addresses** on a new line
   
 # Установка
-#### *Чтобы всё отображалось корректно лучше использовать VS Code или Windows Terminal*
-* [Скачиваем и устанавливаем Golang](https://go.dev/dl/)
+#### *To ensure everything is displayed correctly, it is better to use VS Code or Windows Terminal*
+* [Download and install Golang](https://go.dev/dl/)
 
-Открываем cmd и прописываем:
-1. `cd путь/к/проекту` 
+Open cmd and write:
+1. `cd path/to/project` 
 2. `go mod download` 
 
 # Запуск
 ```
 go run .
 ```
-Или по желанию можно сначала собрать проект, а затем открыть .exe файл (ничё не поменяется, вариант выше легче)
+Or, if you wish, you can first build the project and then open the .exe file (nothing will change, the above option is easier)
 ```
 go build .
 ```
 
-###### P.S. конечно можно сделать чекер ещё быстрее этого, но я лишь хотел потестить go
+###### P.S. Of course, you can make a checker even faster than this, but I just wanted to test go

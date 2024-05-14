@@ -25,7 +25,7 @@ func getBalance(chain Chain, token Token, wallets []Wallet, wg *sync.WaitGroup) 
 
 	caller, err := multicall.Dial(context.Background(), chain.RPC)
 	if err != nil {
-		log.Printf("Ошибка создания caller для %s: %v\n", chain.RPC, err)
+		log.Printf("Error creating caller for %s: %v\n", chain.RPC, err)
 		return
 	}
 
@@ -41,7 +41,7 @@ func getBalance(chain Chain, token Token, wallets []Wallet, wg *sync.WaitGroup) 
 
 	contract, err := multicall.NewContract(abi, token.Address)
 	if err != nil {
-		log.Printf("Ошибка создания контракта для %s: %v\n", token.Symbol, err)
+		log.Printf("Error creating contract for %s: %v\n", token.Symbol, err)
 		return
 	}
 
@@ -59,7 +59,7 @@ func getBalance(chain Chain, token Token, wallets []Wallet, wg *sync.WaitGroup) 
 
 	walletsResults, err := caller.Call(nil, calls...)
 	if err != nil {
-		log.Printf("Ошибк при вызове %s метода контракта %s: %v\n", chain.Name, token.Symbol, err)
+		log.Printf("Error when calling %s contract method %s: %v\n", chain.Name, token.Symbol, err)
 		return
 	}
 
@@ -95,7 +95,7 @@ func writeToCSV(chain Chain, balanceByChain []BalanceData) error {
 	writer := csv.NewWriter(file)
 	defer writer.Flush()
 
-	headers := []string{"№", "Адрес"}
+	headers := []string{"№", "Address"}
 	for _, token := range chain.Tokens {
 		headers = append(headers, token.Symbol)
 	}
@@ -117,42 +117,42 @@ func writeToCSV(chain Chain, balanceByChain []BalanceData) error {
 		}
 	}
 
-	fmt.Printf("Результаты %d %s успешно записаны в results/%s.csv\n", len(balanceByChain), chain.Name, chain.Name)
+	fmt.Printf("The results of %d %s were successfully written to results/%s.csv\n", len(balanceByChain), chain.Name, chain.Name)
 	return nil
 }
 
 func main() {
 	chains, err := readChainsFromConfig("config.yaml")
 	if err != nil {
-		log.Fatalf("Ошибка при чтении сетей из конфига: %v\n", err)
+		log.Fatalf("Error when reading networks from config: %v\n", err)
 	}
 	wallets, err := readWalletsFromFile("wallets.txt")
 	if err != nil {
-		log.Fatalf("Ошибка при чтении кошельков из файла: %v\n", err)
+		log.Fatalf("Error reading wallets from file: %v\n", err)
 	}
 
-	fmt.Printf("Найдено %d сетей и %d кошельков\n", len(chains), len(wallets))
+	fmt.Printf("Found %d networks and %d wallets\n", len(chains), len(wallets))
 
 	if _, err := os.Stat("results"); os.IsNotExist(err) {
         os.Mkdir("results", 0755)
     }
 
 	var selectedChain string
-	options := []string{"Все"}
+	options := []string{"All"}
 	for _, chain := range chains {
 		options = append(options, chain.Name)
 	}
 
 	prompt := &survey.Select{
-		Message: "Выберите сеть:",
+		Message: "Select network:",
 		Options: options,
 	}
 	err = survey.AskOne(prompt, &selectedChain)
 	if err != nil {
-		log.Fatalf("Ошибка при выборе сети: %v\n", err)
+		log.Fatalf("Error when selecting network: %v\n", err)
 	}
 	var chainsToProcess []Chain
-	if selectedChain == "Все" {
+	if selectedChain == "All" {
 		chainsToProcess = chains
 	} else {
 		for _, chain := range chains {
@@ -178,9 +178,9 @@ func main() {
 
 	for _, chain := range chainsToProcess {
 		if err := writeToCSV(chain, BalancesByChain[chain.Name]); err != nil {
-			log.Fatalf("Ошибка при записи в CSV файл: %v\n", err)
+			log.Fatalf("Error writing to CSV file: %v\n", err)
 		}
 	}
 
-	fmt.Printf("Время выполнения: %s\n", time.Since(startTime))
+	fmt.Printf("Lead time: %s\n", time.Since(startTime))
 }

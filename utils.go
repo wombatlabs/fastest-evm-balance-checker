@@ -58,7 +58,7 @@ func readWalletsFromFile(filename string) ([]Wallet, error) {
 
 	file, err := os.Open(filename)
 	if err != nil {
-		return nil, fmt.Errorf("ошибка открытия файла: %v", err)
+		return nil, fmt.Errorf("File opening error: %v", err)
 	}
 	defer file.Close()
 
@@ -77,7 +77,7 @@ func readWalletsFromFile(filename string) ([]Wallet, error) {
 	}
 
 	if err := scanner.Err(); err != nil {
-		return nil, fmt.Errorf("ошибка при сканировании файла: %v", err)
+		return nil, fmt.Errorf("Error while scanning file: %v", err)
 	}
 
 	return wallets, nil
