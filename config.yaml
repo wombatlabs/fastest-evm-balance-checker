@@ -98,8 +98,8 @@ Chains:
     - Symbol: USDC
       Address: "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d"
       Decimals: 18
-    - Symbol: STG
-      Address: "0xb0d502e938ed5f4df2e681fe6e419ff29631d62b"
+    - Symbol: BUSD
+      Address: "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56"
       Decimals: 18
   - Name: Ethereum
     RPC: "https://ethereum.blockpi.network/v1/rpc/public"
@@ -118,6 +118,9 @@ Chains:
       Decimals: 6
     - Symbol: DAI
       Address: "0x6b175474e89094c44da98b954eedeac495271d0f"
+      Decimals: 18
+    - Symbol: SHIB
+      Address: "0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE"
       Decimals: 18
   - Name: Fantom
     RPC: "https://rpc.ankr.com/fantom"
