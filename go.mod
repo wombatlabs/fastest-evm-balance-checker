@@ -1,4 +1,4 @@
-module amogus
+module evm-wallet-checker
 
 go 1.22.0
 
