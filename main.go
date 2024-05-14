@@ -31,7 +31,7 @@ func getBalance(chain Chain, token Token, wallets []Wallet, wg *sync.WaitGroup) 
 
 	var abi string
 	var methodName string
-	if (token.Symbol == "ETH" || token.Symbol == "MATIC" || token.Symbol == "BNB" || token.Symbol == "FTM") { // native
+	if (token.Symbol == "ETH" || token.Symbol == "MATIC" || token.Symbol == "BNB") { // native
 		abi = ETH_ABI
 		methodName = "getEthBalance"
 	} else {
