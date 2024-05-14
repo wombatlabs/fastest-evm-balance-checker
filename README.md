@@ -6,10 +6,10 @@ https://github.com/B0R9F3D9/fastest-evm-balance-checker/assets/131712860/b8ae577
 # Available Networks
 **Arbitrum, Arbitrum Nova, Base, Blast, BSC, Ethereum, Fantom, Linea, Optimism, Polygon, Scroll, Zora. However, you can add any EVM network**
 
-# Настройка
+# Setup
 * In the file `wallets.txt` we enter wallet **addresses** on a new line
   
-# Установка
+# Installation
 #### *To ensure everything is displayed correctly, it is better to use VS Code or Windows Terminal*
 * [Download and install Golang](https://go.dev/dl/)
 
@@ -17,7 +17,7 @@ Open cmd and write:
 1. `cd path/to/project` 
 2. `go mod download` 
 
-# Запуск
+# Launch
 ```
 go run .
 ```
