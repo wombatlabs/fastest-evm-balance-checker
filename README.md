@@ -26,4 +26,21 @@ Or, if you wish, you can first build the project and then open the .exe file (no
 go build .
 ```
 
+## Running
+### Running address checker
+```sh
+./evm-wallet-checker
+```
+
+### Running generate address checker
+Using generated private keys
+```sh
+go run main.go --generate
+```
+Using generated mnemonics
+```sh
+go run main.go --generate --mnemonic
+```
+
+
 ###### P.S. Of course, you can make a checker even faster than this, but I just wanted to test go
